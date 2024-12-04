@@ -46,14 +46,23 @@ export class AppComponent implements OnInit {
       const oldStudent: Student [] = JSON.parse(isLocalPresent)
       let name = this.studentObj.name
       let email = this.studentObj.email
-      this.studentObj.id = this.genRand(10)
-      let findStudent = oldStudent.filter(student =>(student.name == name && student.email == email))
-      if ( Object.keys(findStudent).length == 0) {
-        oldStudent.push(this.studentObj)
-        localStorage.setItem('angularCrud',JSON.stringify(oldStudent))
+      let id = this.studentObj.id
+      let findStudent: Student[]
+      if (id !== '') {
+        findStudent = oldStudent.filter(student =>(student.id !== id ))
+        findStudent.push(this.studentObj)
+        localStorage.setItem('angularCrud',JSON.stringify(findStudent))
         this.closeModal()
       } else {
-        alert("Student already exist")
+        this.studentObj.id = this.genRand(10)
+        findStudent = oldStudent.filter(student =>(student.name == name && student.email == email))
+        if ( Object.keys(findStudent).length == 0) {
+          oldStudent.push(this.studentObj)
+          localStorage.setItem('angularCrud',JSON.stringify(oldStudent))
+          this.closeModal()
+        } else {
+          alert("Student already exist")
+        }
       }
     } else {
       const newStudent = []

@@ -59,16 +59,13 @@
 
             <div class="mb-3 col-6">
               <label for="" class="form-label">Mobile No</label>
-              <input
-                type="tel" [(ngModel)]="studentObj.mobileNo" class="form-control" placeholder="0102.."
-              />
+              <input type="tel" [(ngModel)]="studentObj.mobileNo" class="form-control" placeholder="0102.." />
             </div>
 
             <div class="mb-3 col-6">
               <label for="" class="form-label">Email</label>
-              <input
-                type="email" [(ngModel)]="studentObj.email" class="form-control" placeholder="manou@email.."
-              />
+              <input type="email" [(ngModel)]="studentObj.email" class="form-control" placeholder="manou@email.." />
+              <input type="hidden" [(ngModel)]="studentObj.id"/>
             </div>
 
             <div class="mb-3 col-6">
